@@ -1,0 +1,7 @@
+import subprocess
+
+rc = subprocess.call(['which', 'wget'])
+if rc == 0:
+    print ("wget installed!"+ str(rc))
+else:
+    print ("wget missing in path!")
