@@ -11,7 +11,7 @@ def check_service_status(service_name):
 
 def main():
 
-        if (check_service_status("sshd") == 0):
+        if (check_service_status("firewalld") == 0):
                 print ("Running")
         else:
                 print ("Stopped")
