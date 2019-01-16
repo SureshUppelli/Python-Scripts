@@ -26,9 +26,9 @@ def main():
         print("Updating System")
         subprocess.call(['yum','-y','update'])
         print("Setting up RDO")
-        subprocess.call(['rpm', '-y', 'https://rdoproject.org/repos/rdo-release.rpm'])
+        subprocess.call(['yum', '-y', 'install', 'https://rdoproject.org/repos/rdo-release.rpm'])
         if (check_service_status("firewalld") == 0):
-        #print("Running")
+        	#print("Running")
             subprocess.call(['systemctl','disable','firewalld'])
             subprocess.call(['systemctl','stop','firewalld'])
         if (check_service_status("NetworkManager")==0):
@@ -40,18 +40,17 @@ def main():
         subprocess.call(['yum','install','-y','openstack-packstack'])
         subprocess.call(['packstack','--gen-answer-file=/root/answer.txt'])
         os.chdir(r"/root/")
-        passwd = "Config_DEFAULT_PASSWORD="
-        swift = "CONFIG_SWIFT_INSTALL="
-        clieo = "CONFIG_CEILOMETER_INSTALL="
-        aodh = "CONFIG_AODH_INSTALL="
-        provision = "CONFIG_PROVISION_DEMO="
-        textReplace(passwd, "Config_DEFAULT_PASSWORD=Novi1234")
-        textReplace(swift, "CONFIG_SWIFT_INSTALL=n")
+        passwd = "CONFIG_DEFAULT_PASSWORD="
+	#swift = "CONFIG_SWIFT_INSTALL=y"
+        clieo = "CONFIG_CEILOMETER_INSTALL=y"
+        aodh = "CONFIG_AODH_INSTALL=y"
+        provision = "CONFIG_PROVISION_DEMO=y"
+        textReplace("CONFIG_DEFAULT_PASSWORD=", "Config_DEFAULT_PASSWORD=Novi1234")
+        textReplace("CONFIG_SWIFT_INSTALL=y", "CONFIG_SWIFT_INSTALL=n")
         textReplace(clieo, "CONFIG_CEILOMETER_INSTALL=n")
         textReplace(aodh, "CONFIG_AODH_INSTALL=n")
         textReplace(provision,"CONFIG_PROVISION_DEMO=n")
-        subprocess.call(['packstack', '--answer-file=/root/answer.txt'])
+        subprocess.call(['packstack', '--answer-file=answer.txt'])
 
 main()
-
 
