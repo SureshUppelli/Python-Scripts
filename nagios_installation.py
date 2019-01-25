@@ -1,3 +1,5 @@
+#This code works on CentOS 7.x with python3
+
 import os,sys
 import subprocess
 import urllib.request
