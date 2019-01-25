@@ -1,3 +1,4 @@
+# To run this python script you need python version above 3
 #import urllib.request
 import os, sys
 import subprocess
