@@ -1,7 +1,7 @@
-#from pytube import YouTube
-#yt = YouTube("https://www.youtube.com/watch?v=28EfGCmaCP0")
-#yt = yt.get('mp4', '720p')
-#yt.download('/home/suresh/Music')
+
+# install pip using sudo apt-get install python3-pip
+#sudo pip install --upgrade pip
+#sudo pip install youtube_dl
 
 from __future__ import unicode_literals
 import youtube_dl

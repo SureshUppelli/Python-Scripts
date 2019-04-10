@@ -8,8 +8,8 @@ else:
 	print("Beginning slack download please wait...!")
 
 	url = 'https://downloads.slack-edge.com/linux_releases/slack-desktop-3.3.3-amd64.deb'
+	url = 'https://downloads.slack-edge.com/linux_releases/slack-desktop-3.3.7-amd64.deb'
 	urllib.request.urlretrieve(url, '/tmp/slack.deb')
 	print("Download is finished...!      Starting Installation        Please wait")
-	#import subprocess
-	#subprocess.call(['dpkg','-i','/tmp/slack.deb'])
+	subprocess.call(['dpkg','-i','/tmp/slack.deb'])
 	print("Completed!")
